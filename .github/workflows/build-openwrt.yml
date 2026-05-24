@@ -68,7 +68,7 @@ on:
         type: string
         default: ''
     secrets:
-      github_token:
+      repo_token:
         required: true
 
 env:
@@ -282,7 +282,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       if: steps.tag.outputs.release_tag != '' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.github_token }}
+        GITHUB_TOKEN: ${{ secrets.repo_token }}
       with:
         files: ${{ env.FIRMWARE }}/*
         name: ${{ env.FILE_DATE }}-${{ inputs.openwrt_name }}-${{ inputs.upload_tag_name }}${{ env.BUILD_DOCKERMAN }}
